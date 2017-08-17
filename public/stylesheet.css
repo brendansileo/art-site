@@ -1,9 +1,69 @@
-#centerPanel{
+body{
+	background-color:#000000;
+	overflow: hidden
+}
+
+#nav{
+	width:100%;
+	height:40px;
+	background-color: #999da3;
+	padding:7px;
+}
+
+#nav-button{
+	float:left;
+}
+
+#panel1{
     position: absolute;
     top: 50%;
     left: 50%;
-    margin-top: -50px;
-    margin-left: -50px;
-    width: 100px;
-    height: 100px;
-}​
+    margin-top: -250px;
+    margin-left: -250px;
+    width: 500px;
+}
+
+#panel2{
+    position: absolute;
+    top: 50%;
+    left: 2000px;
+    margin-top: -250px;
+    margin-left: -250px;
+    width: 500px;
+}
+
+#rightButton{
+	position: absolute;
+	width: 50px;
+	height: 200px;
+	top: 50%;
+	left: 100%;
+	margin-left: -50px;
+	margin-top: -100px;
+	background-color:#999da3;
+}
+
+#leftButton{
+	position: absolute;
+	width: 50px;
+	height: 200px;
+	top: 50%;
+	left: 0%;
+	margin-top:-100px;
+	background-color:#999da3;
+}
+
+#date{
+	position: absolute;
+	font-size: 200%;
+	color: #999da3;
+	left:45%;
+	top:7%;
+}
+
+l.verticalLine{
+	color:#777777;
+	margin-left: 20px;
+	margin-right: 20px;
+	float:left;
+}

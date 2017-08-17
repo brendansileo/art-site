@@ -3,24 +3,25 @@
    
    <head>
        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-      <script src = "angular.min.js"></script>
-      <link rel="stylesheet" href="stylesheet.css">
+      <script type="text/javascript" src = "libs/angular.min.js"></script>
+      <script type="text/javascript" src = "libs/d3.min.js"></script>
+      <script type="text/javascript" src = "index.js"></script>
+      <link rel="stylesheet" type="text/css" href="stylesheet.css">
    </head>
    
-   <body ng-app = "myapp" style="background-color:#000000;">
-      
-      <div class="panel panel-default" id="centerPanel">
-         <img src="pics/face2.jpg">
-      </div>
-      
-      <script>
-         angular.module("myapp", [])
-         
-         .controller("HelloController", function($scope) {
-            $scope.helloTo = {};
-            $scope.helloTo.title = "AngularJS";
-         });
-      </script>
-      
+   <body ng-app = "myapp" ng-controller="site">
+
+         <div id="nav">
+            <div id="nav-button">Home</div>
+            <!--<l class="verticalLine">|</l>
+            <div id="nav-button">About</div>-->
+         </div>
+
+         <div id="leftButton" ng-click="imageLeft()"></div>
+
+         <span id="date">{{dateLabel}}</span>
+         <img ng-src="{{getImage(currImage1)}}" id="panel1">
+         <img ng-src="{{getImage(currImage2)}}" id="panel2">
+         <div id="rightButton" ng-click="imageRight()"></div>
    </body>
 </html>
