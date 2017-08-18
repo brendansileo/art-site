@@ -55,9 +55,9 @@
 			if($scope.currImage1 != 0)
 			{
 				$scope.currImage2 = $scope.currImage1-1
-				d3.select("#panel2").style("left", "-700px");
-				d3.select("#panel1").transition().style("left", "2000px").duration(2000);
-				d3.select("#panel2").transition().style("left", "600px").duration(2000);
+				d3.select("#panel2").style("left", "-100vw");
+				d3.select("#panel1").transition().style("left", "200vw").duration(2000);
+				d3.select("#panel2").transition().style("left", "50vw").duration(2000);
 				$scope.visPanel = 2;
 			}
 		}
@@ -66,9 +66,9 @@
 			if($scope.currImage2 != 0)
 			{
 				$scope.currImage1 = $scope.currImage2-1
-				d3.select("#panel1").style("left", "-700px");
-				d3.select("#panel2").transition().style("left", "2000px").duration(2000);
-				d3.select("#panel1").transition().style("left", "600px").duration(2000);
+				d3.select("#panel1").style("left", "-100vw");
+				d3.select("#panel2").transition().style("left", "200vw").duration(2000);
+				d3.select("#panel1").transition().style("left", "50vw").duration(2000);
 				$scope.visPanel = 1;
 			}
 		}
@@ -82,9 +82,9 @@
 			if($scope.currImage1 != $scope.im.length-1)
 			{
 				$scope.currImage2 = $scope.currImage1+1
-				d3.select("#panel2").style("left", "2000px");
-				d3.select("#panel1").transition().style("left", "-700px").duration(2000);
-				d3.select("#panel2").transition().style("left", "600px").duration(2000);
+				d3.select("#panel2").style("left", "200vw");
+				d3.select("#panel1").transition().style("left", "-100vw").duration(2000);
+				d3.select("#panel2").transition().style("left", "50vw").duration(2000);
 				$scope.visPanel = 2
 			}
 		}
@@ -94,8 +94,8 @@
 			{
 				$scope.currImage1 = $scope.currImage2+1
 				d3.select("#panel1").style("left", "2000px");
-				d3.select("#panel2").transition().style("left", "-700px").duration(2000);
-				d3.select("#panel1").transition().style("left", "600px").duration(2000);
+				d3.select("#panel2").transition().style("left", "-100vw").duration(2000);
+				d3.select("#panel1").transition().style("left", "50vw").duration(2000);
 				$scope.visPanel = 1
 			}
 		}
