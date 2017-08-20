@@ -17,7 +17,7 @@ body{
 #panel1{
     position: absolute;
     top: 50vh;
-    left: 50vw;
+    left: -5vw;
     margin-top: -250px;
     margin-left: -250px;
     width: 500px;
@@ -26,31 +26,19 @@ body{
 #panel2{
     position: absolute;
     top: 50vh;
-    left: 200vw;
+    left: 50vw;
     margin-top: -250px;
     margin-left: -250px;
     width: 500px;
 }
 
-#rightButton{
-	position: absolute;
-	width: 50px;
-	height: 200px;
-	top: 50vh;
-	left: 100vw;
-	margin-left: -50px;
-	margin-top: -100px;
-	background-color:#999da3;
-}
-
-#leftButton{
-	position: absolute;
-	width: 50px;
-	height: 200px;
-	top: 50vh;
-	left: 0vw;
-	margin-top:-100px;
-	background-color:#999da3;
+#panel3{
+    position: absolute;
+    top: 50vh;
+    left: 105vw;
+    margin-top: -250px;
+    margin-left: -250px;
+    width: 500px;
 }
 
 #date{

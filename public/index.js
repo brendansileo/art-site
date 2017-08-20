@@ -2,10 +2,8 @@
          
  app.controller("site", function($scope,$http) {
  	$scope.im = []
- 	$scope.currImage1 = 0;
- 	$scope.currImage2 = 1;
- 	$scope.visPanel = 1;
- 	$scope.dateLabel = "";
+ 	$scope.imOrder = ["1","2","3"]
+ 	$scope.currImage = 0;
  	
 
  	$scope.listFiles = function()
@@ -20,91 +18,88 @@
 					$scope.im[i] = $scope.im[i].replace("\"", "")
 					$scope.im[i] = $scope.im[i].replace("\"", "")
 				}
-				$scope.currImage1 = $scope.im.length-1;
-				$scope.currImage2 = $scope.im.length-2;
-				$scope.dateLabel = $scope.getLabel();
+				$scope.currImage = $scope.im.length-3;
 			});
 		
  	}
 
  	$scope.getImage = function(i)
  	{
- 		return $scope.im[i];
+ 		if(i == $scope.imOrder[0])
+ 		{
+ 			if($scope.currImage != 0)
+ 			{
+ 				return $scope.im[$scope.currImage-1]
+ 			}
+ 			else
+ 			{
+ 				return null
+ 			}
+ 		}
+ 		else if(i == $scope.imOrder[1])
+ 		{
+ 			return $scope.im[$scope.currImage]
+ 		}
+ 		else
+ 		{
+ 			if($scope.currImage != $scope.im.length-1)
+ 			{
+ 				return $scope.im[$scope.currImage+1]
+ 			}
+ 			else
+ 			{
+ 				return null
+ 			}
+ 		}
  	}
 
  	$scope.getLabel = function()
  	{
- 		var i;
- 		if($scope.visPanel == 1)
+ 		try
  		{
- 			i = $scope.currImage1;
+	 		var label = $scope.im[$scope.currImage].replace("/pics/", "")
+	 		label = label.replace(".jpg", "")
  		}
- 		else
+ 		catch(err)
  		{
- 			i = $scope.currImage2
+ 			label = "";
  		}
- 		var label = $scope.im[i].replace("/pics/", "")
- 		label = label.replace(".jpg", "")
  		return label
  	}
 
- 	$scope.imageLeft = function()
+ 	$scope.changeIm = function(i)
  	{
-		if($scope.visPanel == 1)
-		{
-			if($scope.currImage1 != 0)
-			{
-				$scope.currImage2 = $scope.currImage1-1
-				d3.select("#panel2").style("left", "-100vw");
-				d3.select("#panel1").transition().style("left", "200vw").duration(2000);
-				d3.select("#panel2").transition().style("left", "50vw").duration(2000);
-				$scope.visPanel = 2;
-			}
-		}
-		else if($scope.visPanel == 2)
-		{
-			if($scope.currImage2 != 0)
-			{
-				$scope.currImage1 = $scope.currImage2-1
-				d3.select("#panel1").style("left", "-100vw");
-				d3.select("#panel2").transition().style("left", "200vw").duration(2000);
-				d3.select("#panel1").transition().style("left", "50vw").duration(2000);
-				$scope.visPanel = 1;
-			}
-		}
- 		$scope.dateLabel = $scope.getLabel();
+ 		if(i == $scope.imOrder[0])
+ 		{
+ 			$scope.currImage--;
+ 		}
+ 		else if(i == $scope.imOrder[2])
+ 		{
+ 			$scope.currImage++;
+ 		}
  	}
 
- 	$scope.imageRight = function()
+ 	$scope.movePanels = function(i)
  	{
- 		if($scope.visPanel == 1)
-		{
-			if($scope.currImage1 != $scope.im.length-1)
-			{
-				$scope.currImage2 = $scope.currImage1+1
-				d3.select("#panel2").style("left", "200vw");
-				d3.select("#panel1").transition().style("left", "-100vw").duration(2000);
-				d3.select("#panel2").transition().style("left", "50vw").duration(2000);
-				$scope.visPanel = 2
-			}
-		}
-		else if($scope.visPanel == 2)
-		{
-			if($scope.currImage2 != $scope.im.length-1)
-			{
-				$scope.currImage1 = $scope.currImage2+1
-				d3.select("#panel1").style("left", "2000px");
-				d3.select("#panel2").transition().style("left", "-100vw").duration(2000);
-				d3.select("#panel1").transition().style("left", "50vw").duration(2000);
-				$scope.visPanel = 1
-			}
-		}
- 		$scope.dateLabel = $scope.getLabel()
+ 		if(i == $scope.imOrder[0])
+ 		{
+ 			var width = $(window).width()
+	 		//left panel
+	 		d3.select("#panel" + $scope.imOrder[0]).transition().style("left", .5*width + "px").duration(2000)
+	 		//middle panel
+	 		d3.select("#panel" + $scope.imOrder[1]).transition().style("left", 1.05*width + "px").duration(2000)
+	 		//right panel
+	 		d3.select("#panel" + $scope.imOrder[2]).transition().style("left", 1.2*width + "px").duration(1000)
+	 		d3.select("#panel" + $scope.imOrder[2]).style("left", -.30 * width + "px")
+	 		d3.select("#panel" + $scope.imOrder[2]).transition().style("left", -.05*width + "px").duration(2000)
+	 	}
+	 	//TODO: Update imOrder 
  	}
 
  	var init = function() 
  	{
  		$scope.listFiles();
+ 		$scope.movePanels();
  	}
  	init();
  });
